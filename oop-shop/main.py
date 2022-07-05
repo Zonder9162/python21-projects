@@ -1,10 +1,10 @@
-from models import User, Product, Comment
+from shop.models import Product
+from shop.serializers import ProductSerializer
 
-user1 = User("test@gmail.com", "hello", "female")
-user1.register("123456789", "123456789")
-user1.login("123456789")
+cat = Category()
+obj1 = Product("iphone", 234, "...", 3)
+obj2 = Product("lenovo", 543, "...", 3)
+obj3 = Product("sumsung", 214, "...", 3)
 
-product1 = Product("Iphone 10", 12345, "...", 10)
-
-comment1 = Comment(user1, product1, "Оч классный телефон")
-print(comment1)
+res = ProductSerializer().serialize_queryset([obj1, obj2, obj3])
+print(res)
